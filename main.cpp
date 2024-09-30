@@ -1,7 +1,31 @@
 ﻿#include <stdio.h>
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// ↓　関数群
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 一般的な賃金体系
+int CaluclateSalary(const int& workTime, const int& salary) {
+	return workTime * salary;
+}
+
+// 再帰的な賃金体系
+int CaluclateRecursionSalary(const int& workTime, const int& salary) {
+	if (workTime == 0) {
+		return 0;
+	} else {
+		return salary + CaluclateRecursionSalary(workTime - 1, (salary * 2) - 50);
+	}
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// ↓　main関数
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
 int main() {
-	printf("hollo\n");
-	printf("こんにちわ");
+	int workTime = 8;
+	printf("一般的給料 : %d\n", CaluclateSalary(workTime, 1072));
+	printf("再帰的給料 : %d", CaluclateRecursionSalary(workTime, 100));
 	return 0;
 }
