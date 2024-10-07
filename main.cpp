@@ -25,7 +25,14 @@ int CaluclateRecursionSalary(const int& workTime, const int& salary) {
 
 int main() {
 	int workTime = 8;
-	printf("一般的給料 : %d\n", CaluclateSalary(workTime, 1072));
-	printf("再帰的給料 : %d", CaluclateRecursionSalary(workTime, 100));
+	int normal = CaluclateSalary(workTime, 1072);
+	int recursion = CaluclateRecursionSalary(workTime, 100);
+	printf("一般的給料 : %d\n", normal);
+	printf("再帰的給料 : %d\n", recursion);
+	if (normal < recursion) {
+		printf("再帰的給料の方が高い");
+	} else {
+		printf("一般的給料の方が高い");
+	}
 	return 0;
 }
