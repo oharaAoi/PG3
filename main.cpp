@@ -1,7 +1,74 @@
 ﻿#include <stdio.h>
+#include <string>
+#include <iostream>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// ↓　基底クラス
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+/// 交通機関
+/// </summary>
+class ITransportation {
+public:
+
+	ITransportation() {};
+	virtual ~ITransportation() = default; 
+
+	virtual void Move() = 0;
+
+protected:
+
+	std::string moveName_;
+
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// ↓　派生クラス
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+/// 電車
+/// </summary>
+class Train : public ITransportation {
+public:
+
+	Train() { moveName_ = "電車"; };
+	~Train() override {};
+
+	void Move() override {
+		std::cout << moveName_ << "で移動します" << std::endl;
+	};
+};
+
+/// <summary>
+/// 車
+/// </summary>
+class Car : public ITransportation {
+public:
+
+	Car() { moveName_ = "車"; };
+	~Car() override {};
+
+	void Move() override {
+		std::cout << moveName_ << "で移動します" << std::endl;
+	};
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// ↓　main処理
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main() {
-	printf("hollo\n");
-	printf("こんにちわ");
+	
+	ITransportation* train = new Train();
+	ITransportation* car = new Car();
+
+	train->Move();
+	car->Move();
+
+	delete train;
+	delete car;
+
 	return 0;
 }
