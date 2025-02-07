@@ -29,7 +29,7 @@ int main() {
 	moveStart = std::chrono::system_clock::now();
 
 	// 移動
-	std::string move = std::move(original);
+	std::string&& move = std::move(original);
 	moveEnd = std::chrono::system_clock::now();
 
 	// 時間を計算
